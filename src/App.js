@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import CakeList from "./CakeList";
+import AddCake from "./AddCake";
+import About from "./About";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import DeleteCake from "./DeleteCake";
+import EditCake from "./EditCake";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router className="myRouter">
+        <nav style={{ color: 'white' }}>
+          <h3>Logo</h3>
+          <Link to="/CakeList">CakeList</Link>
+          <Link to="/AddCake">AddCake</Link>
+
+          <Link to="/DeleteCake">Delete Cake</Link>
+          <Link to="/EditCake">Edit Cake</Link>
+          <Link to="/About">About</Link>
+        </nav>
+        <Route path="/About" component={About} />
+        <Route path="/CakeList" component={CakeList} />
+        <Route path="/AddCake" component={AddCake} />
+        <Route path="/DeleteCake" component={DeleteCake} />
+        <Route path="/EditCake" component={EditCake} />
+      </Router>
     </div>
   );
 }
